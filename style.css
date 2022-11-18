@@ -10,11 +10,13 @@
     background: #000;
 }
 
+/* HEADER */
+
 .header {
     display: flex;
-    height: 5rem;
+    padding: 2rem;
     justify-content: space-around;
-    align-items: center;
+    align-items: center;    
 }
 
 .header-logo {
@@ -67,4 +69,25 @@
 .header-cart i {
     color: #E9C48E;    
     font-size: 2rem;
+}
+
+/* NAVIGATION */
+.nav {
+    display: flex;    
+    justify-content: space-around;
+    background-color: #E9C48E;
+    color: #000;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    padding: 1rem 3rem;    
+}
+
+.nav a:hover {
+    background-color: #000;  
+    color:  #E9C48E;
+    border: 1px solid #E9C48E;
 }
