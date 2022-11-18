@@ -70,3 +70,44 @@ header.append(headerInfo);
     cart.innerHTML = '<i class="fi fi-rr-shopping-cart"></i>';
     headerInfo.append(cart);
 
+
+// NAVIGATION BAR
+const books = document.createElement("a");
+books.setAttribute("class", "nav-link");
+const booksText = document.createTextNode("Books");
+books.appendChild(booksText);
+books.title = "Books";
+books.href = "";
+nav.append(books);
+
+const bestsellers = document.createElement("a");
+bestsellers.setAttribute("class", "nav-link");
+const bestsellersText = document.createTextNode("Bestsellers");
+bestsellers.appendChild(bestsellersText);
+bestsellers.title = "Bestsellers";
+bestsellers.href = "";
+nav.append(bestsellers);
+
+const eBooks = document.createElement("a");
+eBooks.setAttribute("class", "nav-link");
+const eBooksText = document.createTextNode("eBooks");
+eBooks.appendChild(eBooksText);
+eBooks.title = "eBooks";
+eBooks.href = "";
+nav.append(eBooks);
+
+const audioBooks = document.createElement("a");
+audioBooks.setAttribute("class", "nav-link");
+const audioBooksText = document.createTextNode("Audiobooks");
+audioBooks.appendChild(audioBooksText);
+audioBooks.title = "Audiobooks";
+audioBooks.href = "";
+nav.append(audioBooks);
+
+const toys = document.createElement("a");
+toys.setAttribute("class", "nav-link");
+const toysText = document.createTextNode("Toys&Games");
+toys.appendChild(toysText);
+toys.title = "Toys&Games";
+toys.href = "";
+nav.append(toys);
