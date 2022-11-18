@@ -1,17 +1,33 @@
+fetch('books.json')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            appendData(data);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+
+//BODY
+
 const body = document.body;
   
 const container = document.createElement('div');
+container.className = "container";
+
 const header = document.createElement('div');
+header.className = "header";
+
 const nav = document.createElement('div');
+nav.className = "nav";
+
 const main = document.createElement('div');  
+main.className = "main";
+main.id = "main-container";
 
 body.append(container);
 container.append(header, nav, main);
-
-container.setAttribute("class", "container");
-header.setAttribute("class", "header");
-nav.setAttribute("class", "nav");
-main.setAttribute("class", "main");
 
 
 //HEADER
@@ -111,3 +127,41 @@ toys.appendChild(toysText);
 toys.title = "Toys&Games";
 toys.href = "";
 nav.append(toys);
+
+
+//MAIN SECTION
+
+function appendData(data) {
+    const mainContainer = document.getElementById("main-container");
+    for (let i = 0; i < data.length; i++) {         
+        const item = document.createElement("div");
+        item.className = "item";        
+        mainContainer.append(item);
+
+        const itemImg = document.createElement("div");
+        itemImg.className = "item-img";
+        const bookImg = document.createElement("img");
+        bookImg.src = data[i].imageLink;
+        itemImg.append(bookImg);
+
+        const itemName = document.createElement("div");
+        itemName.className = "item-name";
+        const bookName = document.createElement("p");
+        bookName.innerHTML = data[i].title;
+        itemName.append(bookName);    
+        
+        const itemAuthor = document.createElement("div");
+        itemAuthor.className = "item-author";
+        const bookAuthor = document.createElement("p");
+        bookAuthor.innerHTML = data[i].author;
+        itemAuthor.append(bookAuthor); 
+
+        const itemPrice = document.createElement("div");
+        itemPrice.className = "item-price";
+        const bookPrice = document.createElement("p");
+        bookPrice.innerHTML = data[i].price + "$";
+        itemPrice.append(bookPrice); 
+    
+        item.append(itemImg, itemName, itemAuthor, itemPrice);        
+    }
+}
