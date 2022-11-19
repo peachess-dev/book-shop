@@ -73,16 +73,16 @@ header.append(headerSearch);
 
 //header account and cart
 const headerInfo = document.createElement("div");
-headerInfo.setAttribute("class", "header-info");
+headerInfo.className = "header-info";
 header.append(headerInfo);
 
     const account = document.createElement("div");
-    account.setAttribute("class", "header-acc");
+    account.className = "header-acc";
     account.innerHTML = '<i class="fi fi-rr-user"></i>';    
     headerInfo.append(account);
 
-    const cart = document.createElement("div");
-    cart.setAttribute("class", "header-cart");
+    const cart = document.createElement("button");
+    cart.className = "header-cart";
     cart.innerHTML = '<i class="fi fi-rr-shopping-cart"></i>';
     headerInfo.append(cart);
 
@@ -167,14 +167,19 @@ function appendData(data) {
         bookAuthor.innerHTML = data[i].author;
         itemAuthor.append(bookAuthor); 
 
-        const showMore = document.createElement("input");
+        const showMore = document.createElement("button");
         showMore.className = "show-btn";
         showMore.type = "button";
-        showMore.value = "Show more";
+        showMore.innerHTML = "Show more";
 
         const itemDescription = document.createElement("div");
         itemDescription.className = "item-description";
+        itemDescription.style.display = "none";
         itemDescription.innerHTML = data[i].description;
+            const itemClose = document.createElement("button");
+            itemClose.className = "close-btn";
+            itemClose.innerHTML = '<i class="fi fi-rr-cross-small"></i>';
+            itemDescription.append(itemClose);
         item.append(itemDescription);
 
         
@@ -188,12 +193,20 @@ function appendData(data) {
         itemPrice.append(bookPrice);
         itemAnnex.append(itemPrice); 
 
-        const itemFavourite = document.createElement("div");
+        const itemFavourite = document.createElement("button");
         itemFavourite.className = "item-favourite";        
-        itemFavourite.innerHTML = "<i class='fi fi-rs-heart'></i>";
+        itemFavourite.innerHTML = "<i class='fi fi-rs-heart'></i>";     
         itemAnnex.append(itemFavourite);
+        //change button color
+        itemFavourite.addEventListener("click", () => {
+            if(itemFavourite.style.background === "#000") {
+                itemFavourite.style.background = "#E9C48E"
+            } else {
+                itemFavourite.style.background = "#000"
+            }
+        })      
 
-        const itemCart = document.createElement("div");
+        const itemCart = document.createElement("button");
         itemCart.className = "item-cart";        
         itemCart.innerHTML = "<i class='fi fi-rr-shopping-cart'></i>";
         itemAnnex.append(itemCart);
@@ -203,11 +216,19 @@ function appendData(data) {
         //show and hide book description 
         showMore.addEventListener("click", () => {
             if(itemDescription.style.display === "none") {
-                itemDescription.style.display = "block"
+                itemDescription.style.display = "flex"
             } else {
                 itemDescription.style.display = "none"
             }
-        })               
+        }) 
+        
+        itemClose.addEventListener("click", () => {
+            if(itemDescription.style.display === "none") {
+                itemDescription.style.display = "flex"
+            } else {
+                itemDescription.style.display = "none"
+            }
+        })  
 
     }
 }
