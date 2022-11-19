@@ -17,7 +17,7 @@ const container = document.createElement('div');
 container.className = "container";
 
 const header = document.createElement('div');
-header.className = "header";
+header.className = "header sticky";
 
 const nav = document.createElement('div');
 nav.className = "nav";
@@ -85,6 +85,17 @@ header.append(headerInfo);
     cart.setAttribute("class", "header-cart");
     cart.innerHTML = '<i class="fi fi-rr-shopping-cart"></i>';
     headerInfo.append(cart);
+
+// sticky header
+window.onscroll = function() {stickyHeader()};
+const sticky = header.offsetTop;
+function stickyHeader() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}    
 
 
 // NAVIGATION BAR
@@ -156,12 +167,47 @@ function appendData(data) {
         bookAuthor.innerHTML = data[i].author;
         itemAuthor.append(bookAuthor); 
 
+        const showMore = document.createElement("input");
+        showMore.className = "show-btn";
+        showMore.type = "button";
+        showMore.value = "Show more";
+
+        const itemDescription = document.createElement("div");
+        itemDescription.className = "item-description";
+        itemDescription.innerHTML = data[i].description;
+        item.append(itemDescription);
+
+        
+        const itemAnnex = document.createElement("div");
+        itemAnnex.className = "item-annex";
+        
         const itemPrice = document.createElement("div");
         itemPrice.className = "item-price";
         const bookPrice = document.createElement("p");
         bookPrice.innerHTML = data[i].price + "$";
-        itemPrice.append(bookPrice); 
+        itemPrice.append(bookPrice);
+        itemAnnex.append(itemPrice); 
+
+        const itemFavourite = document.createElement("div");
+        itemFavourite.className = "item-favourite";        
+        itemFavourite.innerHTML = "<i class='fi fi-rs-heart'></i>";
+        itemAnnex.append(itemFavourite);
+
+        const itemCart = document.createElement("div");
+        itemCart.className = "item-cart";        
+        itemCart.innerHTML = "<i class='fi fi-rr-shopping-cart'></i>";
+        itemAnnex.append(itemCart);
     
-        item.append(itemImg, itemName, itemAuthor, itemPrice);        
+        item.append(itemImg, itemName, itemAuthor, showMore, itemAnnex);     
+        
+        //show and hide book description 
+        showMore.addEventListener("click", () => {
+            if(itemDescription.style.display === "none") {
+                itemDescription.style.display = "block"
+            } else {
+                itemDescription.style.display = "none"
+            }
+        })               
+
     }
 }
