@@ -60,8 +60,7 @@ HEADER
     width: 15rem;
     height: 2rem;
     background-color: #BBB6C2;
-    color: #FFF;
-    font-size: 1.5rem;
+    color: #000;    
     border: 1px solid #E9C48E;
     border-radius: 5px;
 }
@@ -76,9 +75,19 @@ HEADER
     gap: 2rem;
 }
 
+.header-acc {
+    color:#E9C48E;
+}
+
 .header-acc i {
     color: #E9C48E;    
     font-size: 1.5rem;
+}
+
+.header-cart {
+    background: #000;
+    color:#E9C48E;
+    cursor: pointer;
 }
 
 .header-cart i {
@@ -93,8 +102,12 @@ NAVIGATION
     display: flex;    
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: center;
     background-color: #E9C48E;
     color: #000;    
+    padding: 0;
+    margin: 0;
+    border-bottom: 2px solid #E9C48E;
 }
 
 .nav a {
@@ -102,12 +115,12 @@ NAVIGATION
     color: #000;
     font-weight: 600;
     padding: 1rem 3rem;    
+    margin: 0;
 }
 
 .nav a:hover {
     background-color: #000;  
-    color:  #E9C48E;
-    border: 1px solid #E9C48E;
+    color:  #E9C48E;    
 }
 
 
@@ -166,13 +179,17 @@ MAIN SECTION
 
 .show-btn:hover {
     cursor: pointer;
+    background: #E9C48E;    
+    color:#000;
+    font-weight: 600;
 }
 
-.item-description {
+.item-description {    
     max-width: 14rem;
     position: absolute; 
     align-self: center;    
     display: none;
+    align-items: flex-start;
     background: rgba(187, 192, 194, .5);
     backdrop-filter: blur(5px);
     border: 1px double #E9C48E;
@@ -181,6 +198,17 @@ MAIN SECTION
     padding: .8rem;
     text-align: justify;
     font-style: italic;
+}
+
+.close-btn {
+    position: relative;
+    left: .5rem;
+    top: -.5rem;
+    padding: .1rem;
+    color: #E9C48E;
+    background: #000;
+    font-size: 1.2rem;   
+    cursor: pointer; 
 }
 
 .item-annex {
@@ -197,8 +225,14 @@ MAIN SECTION
 
 .item-favourite {
     cursor: pointer;
+    padding: .2rem;
+    background: #000;
+    color: #E9C48E;
 }
 
 .item-cart {
     cursor: pointer;
+    padding: .2rem;
+    background: #000;
+    color: #E9C48E;
 }
