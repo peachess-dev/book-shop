@@ -17,9 +17,21 @@ HEADER
 .header {
     display: flex;
     flex-wrap: wrap;
-    padding: 2rem;
+    padding: 1rem;
     justify-content: space-around;
-    align-items: center;    
+    align-items: center;        
+    background: #000;
+    border-bottom: 2px solid #E9C48E;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.sticky + .nav {
+    padding-top: 1rem;
 }
 
 .header-logo {
@@ -34,6 +46,8 @@ HEADER
 
 .logo-text h1 {
     color: #E9C48E;
+    font-family: 'Tangerine', cursive;
+    font-size: 3rem;
 }
 
 .header-search {
@@ -54,9 +68,7 @@ HEADER
 
 .search-icon i {
     color: #E9C48E;
-    font-size: 2rem;
-    position: relative;
-    top: .5rem;
+    font-size: 1.5rem;    
 }
 
 .header-info {
@@ -66,12 +78,12 @@ HEADER
 
 .header-acc i {
     color: #E9C48E;    
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .header-cart i {
     color: #E9C48E;    
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 /**********
@@ -82,7 +94,7 @@ NAVIGATION
     flex-wrap: wrap;
     justify-content: space-around;
     background-color: #E9C48E;
-    color: #000;
+    color: #000;    
 }
 
 .nav a {
@@ -104,13 +116,12 @@ MAIN SECTION
 ***********/
 
 .main {
-    display: flex;
-    flex-wrap: wrap;  
-    gap: 4rem;   
-    padding: 4rem 5rem;   
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 4rem;  
+    gap: 5rem;           
     color: #FFF;        
 }
-
 
 .item {    
     display: flex;
@@ -127,15 +138,14 @@ MAIN SECTION
 }
 
 .item-img img {
-    width: 100%;
-    
+    width: 100%;    
     border: 1px solid #E9C48E;  
 }
 
 .item-name {
     display: flex;  
     max-width: 10rem;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:'Lucida Sans', Verdana, sans-serif;
     text-shadow: 1px 1px #000;
 }
 
@@ -146,6 +156,49 @@ MAIN SECTION
     font-weight: 200;
 }
 
+.show-btn {
+    border: 1px solid #E9C48E;
+    background-color: #000;
+    color: #FFF;
+    padding: .5rem 2rem;
+    margin: .5rem 0;
+}
+
+.show-btn:hover {
+    cursor: pointer;
+}
+
+.item-description {
+    max-width: 14rem;
+    position: absolute; 
+    align-self: center;    
+    display: none;
+    background: rgba(187, 192, 194, .5);
+    backdrop-filter: blur(5px);
+    border: 1px double #E9C48E;
+    border-radius: 5px;
+    color: #000;
+    padding: .8rem;
+    text-align: justify;
+    font-style: italic;
+}
+
+.item-annex {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;    
+}
+
 .item-price {
-    text-decoration: underline;
+    max-width: fit-content;
+    padding-bottom: .2rem;
+    border-bottom: 2px solid #E9C48E;
+}
+
+.item-favourite {
+    cursor: pointer;
+}
+
+.item-cart {
+    cursor: pointer;
 }
