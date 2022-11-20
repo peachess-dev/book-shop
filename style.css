@@ -236,3 +236,47 @@ MAIN SECTION
     background: #000;
     color: #E9C48E;
 }
+
+/* shopping cart */
+.shopping-cart {
+    display: flex;    
+    flex-direction: column;
+    padding: 1.5rem;
+    background-color: #BBB6C2;
+    color:#000;
+    border: 2px solid #E9C48E;
+    position: absolute;
+    top: 100%;
+    right: 0%;
+    width: 15rem;
+    min-height: calc(100vh - 7.5em);    
+    gap: 1rem;
+}
+
+.cart-row {
+    display: flex;    
+    justify-content: space-around;
+    gap: .5rem;
+    border:1px solid #E9C48E;
+}
+
+.cart-row-div {
+    display: flex;
+}
+
+.cart-row-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    font-size: .6rem;
+}
+
+.cart-row-author {
+    font-family:'Courier New', Courier, monospace;
+    font-size: .6rem;
+}
+
+.cart-row-price {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: .7rem;   
+
+}
