@@ -67,7 +67,7 @@ header.append(headerSearch);
 
     const searchBarIcon = document.createElement("div");
     searchBarIcon.setAttribute("class", "search-icon");
-    searchBarIcon.innerHTML = '<i class="fi fi-rs-search"></i>';   
+    searchBarIcon.innerHTML = '<i class="fi fi-rr-search"></i>';   
     headerSearch.append(searchBarIcon);  
 
 
@@ -195,7 +195,7 @@ function appendData(data) {
 
         const itemFavourite = document.createElement("button");
         itemFavourite.className = "item-favourite";        
-        itemFavourite.innerHTML = "<i class='fi fi-rs-heart'></i>";     
+        itemFavourite.innerHTML = "<i class='fi fi-rr-heart'></i>";     
         itemAnnex.append(itemFavourite);
         //change button color
         itemFavourite.addEventListener("click", () => {
@@ -209,9 +209,47 @@ function appendData(data) {
         const itemCart = document.createElement("button");
         itemCart.className = "item-cart";        
         itemCart.innerHTML = "<i class='fi fi-rr-shopping-cart'></i>";
-        itemAnnex.append(itemCart);
+        itemAnnex.append(itemCart);       
     
         item.append(itemImg, itemName, itemAuthor, showMore, itemAnnex);     
+
+        // shopping cart add items 
+        itemCart.addEventListener("click", () => {           
+
+         const cartRow = document.createElement("div");
+         cartRow.className = "cart-row";
+         shoppingCart.append(cartRow);
+            const cartRowDiv = document.createElement("div");
+            cartRowDiv.className = "cart-row-div";
+            cartRow.append(cartRowDiv);
+
+             const cartRowTitle = document.createElement("h2");
+             cartRowTitle.className = "cart-row-title";
+             cartRowTitle.innerHTML = data[i].title;
+             cartRowDiv.append(cartRowTitle);
+
+             const cartRowAuthor = document.createElement("h2");
+             cartRowAuthor.className = "cart-row-author";
+             cartRowAuthor.innerHTML = data[i].author;
+             cartRowDiv.append(cartRowAuthor);
+
+             const cartRowPrice = document.createElement("h2");
+             cartRowPrice.className = "cart-row-price";
+             cartRowPrice.innerHTML = data[i].price + "$"
+             cartRowDiv.append(cartRowPrice);  
+
+             const cartDeleteBtn = document.createElement("button");
+             cartDeleteBtn.className = "cart-delete-btn";
+             cartDeleteBtn.innerHTML = "Delete";
+             cartRow.append(cartDeleteBtn);
+
+             cartDeleteBtn.addEventListener("click", () => {
+                shoppingCart.remove(cartRow);
+            })
+        })
+
+        // shopping cart delete items 
+       
         
         //show and hide book description 
         showMore.addEventListener("click", () => {
@@ -228,7 +266,23 @@ function appendData(data) {
             } else {
                 itemDescription.style.display = "none"
             }
-        })  
-
+        })
     }
+
+     //add shopping cart 
+     var shoppingCart = document.createElement("div");
+     shoppingCart.className = "shopping-cart";     
+     shoppingCart.style.display = "none";
+     header.append(shoppingCart);
+
+     // toggle shopping cart
+     cart.addEventListener("click", () => {
+         if(shoppingCart.style.display === "none") {
+             shoppingCart.style.display = "flex"
+         } else {
+             shoppingCart.style.display = "none"
+         }
+     })    
+     
+
 }
