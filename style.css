@@ -254,13 +254,14 @@ MAIN SECTION
     color:#FFF;
     border: 2px solid #E9C48E;
     position: absolute;
-    top: 100%;
+    top: 22%;
     right: 0%;
     width: 18rem;
     min-height: calc(100vh - 7.5em);    
     gap: 1rem;
     border-radius: 10px;
     box-shadow: -2px 3px 2px #E9C48E;    
+    
 }
 
 .cart-row {
