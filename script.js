@@ -65,7 +65,7 @@ header.append(headerSearch);
     searchBar.setAttribute("type", "text");   
     headerSearch.append(searchBar);
 
-    const searchBarIcon = document.createElement("div");
+    const searchBarIcon = document.createElement("button");
     searchBarIcon.setAttribute("class", "search-icon");
     searchBarIcon.innerHTML = '<i class="fi fi-rr-search"></i>';   
     headerSearch.append(searchBarIcon);  
@@ -76,7 +76,7 @@ const headerInfo = document.createElement("div");
 headerInfo.className = "header-info";
 header.append(headerInfo);
 
-    const account = document.createElement("div");
+    const account = document.createElement("button");
     account.className = "header-acc";
     account.innerHTML = '<i class="fi fi-rr-user"></i>';    
     headerInfo.append(account);
@@ -139,10 +139,41 @@ toys.title = "Toys&Games";
 toys.href = "";
 nav.append(toys);
 
+// SHOPPING CART
+//add shopping cart 
+var shoppingCart = document.createElement("div");
+shoppingCart.className = "shopping-cart";     
+shoppingCart.style.display = "none";
+header.append(shoppingCart);   
+         
+// toggle shopping cart
+cart.addEventListener("click", () => {
+    if(shoppingCart.style.display === "none") {
+         shoppingCart.style.display = "flex"
+    } else {
+         shoppingCart.style.display = "none"
+    }
+})    
+
+// total sum section
+let totalSum = 0;
+const total = document.createElement("div")
+total.className = "sum-total";
+total.innerHTML = `Total: $${totalSum}`;
+shoppingCart.append(total);
+
+// checkout button
+const checkout = document.createElement("button");
+checkout.className = "checkout-btn";
+checkout.innerHTML = "proceed checkout";
+shoppingCart.append(checkout); 
+
 
 //MAIN SECTION
 
 function appendData(data) {
+
+    // render books catalog
     const mainContainer = document.getElementById("main-container");
     for (let i = 0; i < data.length; i++) {         
         const item = document.createElement("div");
@@ -181,7 +212,6 @@ function appendData(data) {
             itemClose.innerHTML = '<i class="fi fi-rr-cross-small"></i>';
             itemDescription.append(itemClose);
         item.append(itemDescription);
-
         
         const itemAnnex = document.createElement("div");
         itemAnnex.className = "item-annex";
@@ -197,92 +227,93 @@ function appendData(data) {
         itemFavourite.className = "item-favourite";        
         itemFavourite.innerHTML = "<i class='fi fi-rr-heart'></i>";     
         itemAnnex.append(itemFavourite);
-        //change button color
-        itemFavourite.addEventListener("click", () => {
-            if(itemFavourite.style.background === "#000") {
-                itemFavourite.style.background = "#E9C48E"
-            } else {
-                itemFavourite.style.background = "#000"
-            }
-        })      
-
+        
         const itemCart = document.createElement("button");
         itemCart.className = "item-cart";        
         itemCart.innerHTML = "<i class='fi fi-rr-shopping-cart'></i>";
         itemAnnex.append(itemCart);       
     
-        item.append(itemImg, itemName, itemAuthor, showMore, itemAnnex);     
+        item.append(itemImg, itemName, itemAuthor, showMore, itemAnnex);         
+        
+        
+     //show and hide book description 
+     showMore.addEventListener("click", () => {
+        if(itemDescription.style.display === "none") {
+            itemDescription.style.display = "flex"
+        } else {
+            itemDescription.style.display = "none"
+        }
+    }) 
+    
+    itemClose.addEventListener("click", () => {
+        if(itemDescription.style.display === "none") {
+            itemDescription.style.display = "flex"
+        } else {
+            itemDescription.style.display = "none"
+        }
+    })
 
-        // shopping cart add items 
-        itemCart.addEventListener("click", () => {           
+    //declaring shopping cart variables 
+    const cartRow = document.createElement("div");
+    cartRow.className = "cart-row";
 
-         const cartRow = document.createElement("div");
-         cartRow.className = "cart-row";
-         shoppingCart.append(cartRow);
-            const cartRowDiv = document.createElement("div");
-            cartRowDiv.className = "cart-row-div";
-            cartRow.append(cartRowDiv);
+    const cartRowDiv = document.createElement("div");
+    cartRowDiv.className = "cart-row-div";
 
-             const cartRowTitle = document.createElement("h2");
-             cartRowTitle.className = "cart-row-title";
-             cartRowTitle.innerHTML = data[i].title;
-             cartRowDiv.append(cartRowTitle);
+    const cartRowTitle = document.createElement("h2");
+    cartRowTitle.className = "cart-row-title";
+    cartRowTitle.innerHTML = data[i].title;
 
-             const cartRowAuthor = document.createElement("h2");
-             cartRowAuthor.className = "cart-row-author";
-             cartRowAuthor.innerHTML = data[i].author;
-             cartRowDiv.append(cartRowAuthor);
+    const cartRowAuthor = document.createElement("h2");
+    cartRowAuthor.className = "cart-row-author";
+    cartRowAuthor.innerHTML = data[i].author;
 
-             const cartRowPrice = document.createElement("h2");
-             cartRowPrice.className = "cart-row-price";
-             cartRowPrice.innerHTML = data[i].price + "$"
-             cartRowDiv.append(cartRowPrice);  
+    const cartRowPrice = document.createElement("h2");
+    cartRowPrice.className = "cart-row-price";
+    cartRowPrice.innerHTML = data[i].price + "$"
 
-             const cartDeleteBtn = document.createElement("button");
-             cartDeleteBtn.className = "cart-delete-btn";
-             cartDeleteBtn.innerHTML = "Delete";
-             cartRow.append(cartDeleteBtn);
+    const cartDeleteBtn = document.createElement("button");
+    cartDeleteBtn.className = "cart-delete-btn";
+    cartDeleteBtn.innerHTML = '<i class="fi fi-rr-cross-small"></i>';
 
-             cartDeleteBtn.addEventListener("click", () => {
-                shoppingCart.remove(cartRow);
-            })
-        })
+
+    // render items in shopping cart
+    itemCart.addEventListener("click", addToCart) 
+    function addToCart() {        
+        shoppingCart.appendChild(cartRow);        
+        cartRow.append(cartRowDiv);            
+        cartRowDiv.append(cartRowTitle);            
+        cartRowDiv.append(cartRowAuthor);            
+        cartRowDiv.append(cartRowPrice);              
+        cartRow.append(cartDeleteBtn);                
 
         // shopping cart delete items 
-       
-        
-        //show and hide book description 
-        showMore.addEventListener("click", () => {
-            if(itemDescription.style.display === "none") {
-                itemDescription.style.display = "flex"
-            } else {
-                itemDescription.style.display = "none"
-            }
-        }) 
-        
-        itemClose.addEventListener("click", () => {
-            if(itemDescription.style.display === "none") {
-                itemDescription.style.display = "flex"
-            } else {
-                itemDescription.style.display = "none"
-            }
+        cartDeleteBtn.addEventListener("click", () => {
+        shoppingCart.removeChild(cartRow)
         })
+
+        updateTotalSum()
     }
 
-     //add shopping cart 
-     var shoppingCart = document.createElement("div");
-     shoppingCart.className = "shopping-cart";     
-     shoppingCart.style.display = "none";
-     header.append(shoppingCart);
+    //cart array
+    let Emptycart = [];
+    let id = data[i].id
+    //add to cart   
 
-     // toggle shopping cart
-     cart.addEventListener("click", () => {
-         if(shoppingCart.style.display === "none") {
-             shoppingCart.style.display = "flex"
-         } else {
-             shoppingCart.style.display = "none"
-         }
-     })    
-     
-
+    function updateTotalSum(id) {
+        const item = data.find((product) => product.id === id);
+        Emptycart.push(item)
+        console.log(Emptycart)
+    }    
 }
+}
+
+//
+const addBtn = document.getElementsByClassName("header-acc");
+for (let j = 0; j < addBtn.length; j++) {
+    addBtn[j].addEventListener("click", () => {console.log("Hello")});
+}
+
+
+
+
