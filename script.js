@@ -295,23 +295,15 @@ function appendData(data) {
         updateTotalSum()
     }
 
-    //cart array
-    let Emptycart = [];
-    let id = data[i].id
-    //add to cart   
-
-    function updateTotalSum(id) {
-        const item = data.find((product) => product.id === id);
-        Emptycart.push(item)
-        console.log(Emptycart)
-    }    
-}
-}
-
-//
-const addBtn = document.getElementsByClassName("header-acc");
-for (let j = 0; j < addBtn.length; j++) {
-    addBtn[j].addEventListener("click", () => {console.log("Hello")});
+    //update total sum
+        function updateTotalSum() { 
+        let newPrice = data[i].price
+            totalSum += newPrice
+            console.log(totalSum)
+            total.innerHTML = `Total: $${totalSum}`
+        } 
+       
+    }
 }
 
 
