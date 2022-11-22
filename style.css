@@ -31,7 +31,8 @@ HEADER
 }
 
 .sticky + .nav {
-    padding-top: 1rem;
+    padding-top: 5rem;
+    transition: ease 1s;
 }
 
 .header-logo {
