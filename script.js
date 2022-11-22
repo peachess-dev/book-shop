@@ -304,6 +304,11 @@ function appendData(data) {
         } 
        
     }
+
+    // redirect to order page
+    checkout.onclick = function () {
+        location.href = '../book-shop/order.html';
+      };
 }
 
 
