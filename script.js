@@ -290,6 +290,8 @@ function appendData(data) {
         // shopping cart delete items 
         cartDeleteBtn.addEventListener("click", () => {
         shoppingCart.removeChild(cartRow)
+
+        reduceTotalSum()
         })
 
         updateTotalSum()
@@ -302,6 +304,13 @@ function appendData(data) {
             console.log(totalSum)
             total.innerHTML = `Total: $${totalSum}`
         } 
+    // reduce total sum
+        function reduceTotalSum() {
+            let newPrice = data[i].price
+            totalSum -= newPrice
+            console.log(totalSum)
+            total.innerHTML = `Total: $${totalSum}`
+        }   
        
     }
 
