@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- script -->
+    <script src="../book-shop/order.js" async></script>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="name">Surname: </label>
+            <input type="text" id="surname" name="surname" required><br>
+            <input type="date" required><br>
+            <label for="street">Street</label>
+            <input type="text" name="street" id="street" required><br>
+            <label for="house">House number</label>
+            <input type="number" name="house" id="house" required><br>
+            <label for="flat">Flat number</label>
+            <input type="number" name="flat" id="flat" required><br>
+            <label for="cash">Cash</label>
+            <input type="radio" id="cash" name="payment" value="cash">
+            <label for="card">Card</label>
+            <input type="radio" id="card" name="payment" value="card"><br>
+
+            <input type="checkbox" id="gift" name="gift" value="gift">
+            <label for="gift"> Pack as a gift</label><br>
+            <input type="checkbox" id="postcard" name="postcard" value="postcard">
+            <label for="postcard"> Add postcard</label><br>
+            <input type="checkbox" id="discount" name="discount" value="discount">
+            <label for="discount"> Provide 2% discount to the next time</label><br>
+            <input type="checkbox" id="merch" name="merch" value="merch">
+            <label for="merch"> Branded pen or pencil</label><br>            
+            <input type="submit" value="Complete order" onclick="alert('The page is on progress')">
+        </fieldset>
+    </form>
+</body>
+</html>
