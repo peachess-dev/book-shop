@@ -8,65 +8,76 @@
     <!-- script -->
     <script src="../book-shop/order.js" async></script>
     <!-- style css-->
-    <link rel="stylesheet" href="..//book-shop/order.css">
+    <link rel="stylesheet" href="../book-shop/order.css">
 </head>
-<body>
-    <form id="order_form" action="#" method="post">
+<body>    
+    <form id="order_form" novalidate>        
         <div>
-            <label for="name">Name: </label>
-            <input type="text" id="name" name="name" placeholder="Enter your name" minlength="4" required>
+            <label for="name">First name: </label>
+            <input type="text" id="name" name="name" placeholder="Enter your first name" 
+            onfocusout="validateFirstName()" required>
+            <span class="error_message"></span>
         </div>
         <div>
-            <label for="surname">Surname: </label>
-            <input type="text" id="surname" name="surname" placeholder="Enter your surname" minlength="5" required>
+            <label for="surname">Last name: </label>
+            <input type="text" id="surname" name="surname" placeholder="Enter your last name" 
+            onfocusout="validateLastName()" required>
+            <span class="error_message"></span>
         </div>
         <div>
             <label for="date">Delivery date: </label>
-            <input type="date" required min="23/11/2022">
+            <input type="date" name="date" id="date"
+            onfocusout="validateDate()" required>
+            <span class="error_message"></span>
         </div>
         <div>
-            <label for="street">Street</label>
-            <input type="text" name="street" id="street" required>
+            <label for="street">Street name</label>
+            <input type="text" name="street" id="street"
+            onfocusout="validateStreet()" required>
+            <span class="error_message"></span>
         </div>
         <div>
             <label for="house">House number</label>
-            <input type="number" name="house" id="house" min="1" required>
+            <input type="text" name="house" id="house" 
+            onfocusout="validateHouse()" required>
+            <span class="error_message"></span>
         </div>
         <div>
-            <label for="flat">Flat number</label>
-            <input type="number" name="flat" id="flat" min="1" required>
+            <label for="flat">Appartment</label>
+            <input type="text" name="flat" id="flat" 
+            onfocusout="validateFlat()" required>
+            <span class="error_message"></span>
         </div>
-        <div class="pay">
+        <div>
             <label for="payment">Pay with</label>
             <div class="pay_option">
                 <input type="radio" id="cash" name="payment" value="cash">           
                 <label for="cash">cash</label>
                 <input type="radio" id="card" name="payment" value="card" checked>  
                 <label for="card">card</label> 
-            </div>
-                                  
+            </div>                                  
         </div>
-        <div class="gift_option">
-            <div>
-                
-                <input type="checkbox" id="gift" name="gift" value="gift">
-                <label for="gift"> Pack as a gift</label>
+        <div id="gift_option">
+            <div class="gift_text">Please choose 2 gifts</div>
+            <div>                
+                <input type="checkbox" class="gift" id="present" name="present" value="present">
+                <label for="present"> Pack as a gift</label>
             </div>
             <div>                
-                <input type="checkbox" id="postcard" name="postcard" value="postcard">
+                <input type="checkbox" class="gift" id="postcard" name="postcard" value="postcard">
                 <label for="postcard"> Add postcard</label>
             </div>
             <div>                
-                <input type="checkbox" id="discount" name="discount" value="discount">
+                <input type="checkbox" class="gift" id="discount" name="discount" value="discount">
                 <label for="discount"> Provide 2% discount to the next time</label>
             </div>
             <div>                 
-                <input type="checkbox" id="merch" name="merch" value="merch">  
+                <input type="checkbox" class="gift" id="merch" name="merch" value="merch">  
                 <label for="merch"> Branded pen or pencil</label>  
-            </div>         
+            </div>               
         </div>
         <div class="complete_btn">
-            <input type="submit" value="Complete order" onclick="alert('The page is on progress')" disabled>
+            <input type="submit" value="Complete order">
         </div>           
     </form>
 </body>
