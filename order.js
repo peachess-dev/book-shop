@@ -189,13 +189,29 @@ function deliveryDate(input) {
 
 // order confirmation 
 
-
-
-
 submitBtn.addEventListener("click", orderInfo)
 
 function orderInfo() {     
     alert (`Your purchase will be delivered at ${street.value} ${house.value} ${flat.value}. Customer name is ${firstName.value} ${lastName.value}. Delivery date is ${date.value} `)
 }
+
+// enable submit button 
+const input = document.getElementsByTagName("input")
+let orders = []
+
+for (let i = 0; i < form.length; i++) 
+    {
+        input[i].addEventListener("keyup", (e) => {
+            const inputValue = e.currentTarget.value 
+            if (inputValue === "") {
+           submitBtn.disabled = true
+        } else {
+            submitBtn.disabled = false
+        }
+    }) 
+  
+}
+
+
 
 
