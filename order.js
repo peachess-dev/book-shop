@@ -8,6 +8,7 @@ const street = document.getElementById("street");
 const house = document.getElementById("house");
 const flat = document.getElementById("flat");
 const gifts = document.getElementsByClassName("gift");
+const submitBtn = document.getElementById("submit")
 
 // Error message
 
@@ -187,3 +188,14 @@ function deliveryDate(input) {
 
 
 // order confirmation 
+
+
+
+
+submitBtn.addEventListener("click", orderInfo)
+
+function orderInfo() {     
+    alert (`Your purchase will be delivered at ${street.value} ${house.value} ${flat.value}. Customer name is ${firstName.value} ${lastName.value}. Delivery date is ${date.value} `)
+}
+
+
