@@ -143,7 +143,7 @@ function onlyNumbers(input) {
 }
 
 function numbersAndDash(input) {
-    if(/(?<!-)\d./.test(input.value)) {
+    if(/^\d[\/\-]?\d*/.test(input.value)) {
         setValid(input);
         return true;
     } else {
