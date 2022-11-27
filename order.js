@@ -134,7 +134,7 @@ function lettersAndNumbers(input){
 }
 
 function onlyNumbers(input) {
-    if(/^[1-9]+$/.test(input.value)){
+    if(/^[0-9]+$/.test(input.value)){
         setValid(input);
         return true;
     } else {
@@ -144,9 +144,9 @@ function onlyNumbers(input) {
 }
 
 function numbersAndDash(input) {
-    if(/^\d[\/\-]?\d*/.test(input.value)) {
+    if(/^[1-9]+[\/\-]?\d*$/.test(input.value)) {
         setValid(input);
-        return true;
+        return true;        
     } else {
         setInvalid(input, `${input.name} must contain only positive numbers`);
         return false;
