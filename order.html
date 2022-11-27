@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- script -->
+    <script src="../book-shop/order.js" async></script>
+    <!-- style css-->
+    <link rel="stylesheet" href="../book-shop/order.css">
+</head>
+<body>    
+    <form id="order_form" novalidate>        
+        <div>
+            <label for="name">First name: </label>
+            <input type="text" id="name" name="name" placeholder="Enter your first name" 
+            onfocusout="validateFirstName()" required class="input">
+            <span class="error_message"></span>
+        </div>
+        <div>
+            <label for="surname">Last name: </label>
+            <input type="text" id="surname" name="surname" placeholder="Enter your last name" 
+            onfocusout="validateLastName()" required class="input">
+            <span class="error_message"></span>
+        </div>
+        <div>
+            <label for="date">Delivery date: </label>
+            <input type="date" name="date" id="date"
+            onfocusout="validateDate()" required class="input">
+            <span class="error_message"></span>
+        </div>
+        <div>
+            <label for="street">Street name</label>
+            <input type="text" name="street" id="street"
+            onfocusout="validateStreet()" required class="input">
+            <span class="error_message"></span>
+        </div>
+        <div>
+            <label for="house">House number</label>
+            <input type="text" name="house" id="house" 
+            onfocusout="validateHouse()" required class="input">
+            <span class="error_message"></span>
+        </div>
+        <div>
+            <label for="flat">Appartment</label>
+            <input type="text" name="flat" id="flat" 
+            onfocusout="validateFlat()" required class="input">
+            <span class="error_message"></span>
+        </div>
+        <div>
+            <label for="payment">Pay with</label>
+            <div class="pay_option">
+                <input type="radio" id="cash" name="payment" value="cash">           
+                <label for="cash">cash</label>
+                <input type="radio" id="card" name="payment" value="card" checked>  
+                <label for="card">card</label> 
+            </div>                                  
+        </div>
+        <div id="gift_option">
+            <div class="gift_text">Please choose 2 gifts</div>
+            <div>                
+                <input type="checkbox" class="gift" id="present" name="present" value="present">
+                <label for="present"> Pack as a gift</label>
+            </div>
+            <div>                
+                <input type="checkbox" class="gift" id="postcard" name="postcard" value="postcard">
+                <label for="postcard"> Add postcard</label>
+            </div>
+            <div>                
+                <input type="checkbox" class="gift" id="discount" name="discount" value="discount">
+                <label for="discount"> Provide 2% discount to the next time</label>
+            </div>
+            <div>                 
+                <input type="checkbox" class="gift" id="merch" name="merch" value="merch">  
+                <label for="merch"> Branded pen or pencil</label>  
+            </div>               
+        </div>
+        <div class="complete_btn">
+            <input type="submit" id="submit" name="submit" value="Complete order" disabled="disabled">
+        </div>           
+    </form>
+</body>
+</html>

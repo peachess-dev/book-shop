@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    background: #000;
+    color: #FFF;
+    min-height: 100vh;
+}
+
+#order_form{
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin: auto;
+    gap: 2rem;   
+}
+
+#order_form div {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+#order_form div span {
+    position: absolute;
+    top: 90%;
+    
+}
+
+#order_form span{   
+    font-style: italic;
+}
+
+#order_form div input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    background-color: #E9C48E;
+    font-style: italic;
+}
+
+input:focus {
+    outline: none;
+  }
+
+  #order_form div:nth-child(7) input {
+    margin-left: 1rem;
+}
+
+#order_form div:nth-child(7) label {
+    margin-left: .3rem;
+}
+
+
+#order_form div:nth-child(8) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .2rem;
+}
+
+#order_form div:nth-child(8) input {
+    margin-right: .5rem;
+}
+
+.gift_text {
+    margin-bottom: 1rem;
+}
+
+.pay_option label {
+    margin-left: -.5rem;
+}
+
+.complete_btn input {
+    min-width: 100%;
+    padding: .6rem;
+    background: #E9C48E;
+    font-size: 1.1rem;    
+}
+
+#submit:enabled {
+    cursor: pointer;    
+}
+
+#submit:enabled:hover {    
+    color: #FFF;   
+}
