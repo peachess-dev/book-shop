@@ -134,7 +134,7 @@ function lettersAndNumbers(input){
 }
 
 function onlyNumbers(input) {
-    if(/^[0-9]+$/.test(input.value)){
+    if(/^[1-9][0-9]+$/.test(input.value)){
         setValid(input);
         return true;
     } else {
